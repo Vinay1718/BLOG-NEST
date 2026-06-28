@@ -1,0 +1,67 @@
+.post-detail-page { max-width: 780px; margin: 0 auto; padding: 40px 20px 80px; }
+.breadcrumb { font-size: 0.825rem; color: var(--text-muted); margin-bottom: 24px; }
+.breadcrumb a { color: var(--primary); }
+.breadcrumb a:hover { text-decoration: underline; }
+.post-header { margin-bottom: 32px; }
+.post-header h1 { font-size: 2.4rem; font-weight: 800; line-height: 1.25; color: var(--text); margin: 12px 0 20px; }
+.post-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
+.post-author-info { display: flex; align-items: center; gap: 12px; }
+.author-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.author-initials-lg {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--primary); color: #fff; display: flex;
+  align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem;
+}
+.author-nm { font-weight: 700; font-size: 0.95rem; }
+.post-date-meta { font-size: 0.8rem; color: var(--text-muted); }
+.post-actions { display: flex; align-items: center; gap: 10px; }
+.action-btn {
+  padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--card); cursor: pointer; font-size: 0.875rem; transition: all 0.2s;
+}
+.action-btn.liked { background: #fff1f2; border-color: #fecdd3; }
+.post-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.post-cover { border-radius: var(--radius); overflow: hidden; margin-bottom: 36px; }
+.post-cover img { width: 100%; max-height: 480px; object-fit: cover; }
+.post-body { font-size: 1.1rem; line-height: 1.9; color: #374151; }
+.post-body p { margin-bottom: 1.4em; }
+.post-like-bar { text-align: center; padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 40px 0; }
+.like-big-btn {
+  font-size: 1.1rem; padding: 12px 28px; border-radius: 30px;
+  border: 2px solid #fecdd3; background: #fff1f2; cursor: pointer;
+  transition: all 0.2s; margin-bottom: 8px; font-weight: 700;
+}
+.like-big-btn.liked { background: #fee2e2; }
+.like-big-btn:hover { transform: scale(1.05); }
+.post-like-bar p { color: var(--text-muted); font-size: 0.875rem; margin-top: 8px; }
+.author-card {
+  display: flex; gap: 20px; align-items: center;
+  background: var(--card); border-radius: var(--radius);
+  padding: 28px; margin-bottom: 40px; box-shadow: var(--shadow);
+}
+.author-card img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.author-card h4 { font-size: 1rem; margin-bottom: 6px; }
+.author-card p { font-size: 0.875rem; color: var(--text-muted); }
+.comments-section h3 { font-size: 1.4rem; margin-bottom: 24px; }
+.comment-form { margin-bottom: 32px; }
+.comment-form textarea {
+  width: 100%; padding: 14px; border: 1.5px solid var(--border); border-radius: 10px;
+  font-size: 0.9rem; resize: vertical; font-family: inherit; outline: none; margin-bottom: 12px;
+}
+.comment-form textarea:focus { border-color: var(--primary); }
+.login-prompt { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+.login-prompt a { color: var(--primary); font-weight: 600; }
+.comment-item { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.comment-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.author-avatar-sm { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.author-initials {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--primary); color: #fff; display: flex;
+  align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;
+}
+.comment-date { font-size: 0.775rem; color: var(--text-muted); margin-left: 8px; }
+.delete-comment-btn { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.875rem; }
+.delete-comment-btn:hover { color: var(--danger); }
+.comment-content { font-size: 0.9rem; line-height: 1.6; color: var(--text); padding-left: 42px; }
+.no-comments { color: var(--text-muted); font-size: 0.9rem; }
+@media (max-width: 640px) { .post-header h1 { font-size: 1.7rem; } .post-meta { flex-direction: column; align-items: flex-start; } }

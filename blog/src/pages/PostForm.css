@@ -1,0 +1,8 @@
+.post-form-page { padding: 40px 20px 80px; }
+.post-form-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 40px; max-width: 860px; margin: 0 auto; }
+.post-form-card h1 { font-size: 1.8rem; margin-bottom: 32px; color: var(--text); }
+.post-form { display: flex; flex-direction: column; gap: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.img-preview { margin-top: 10px; max-height: 200px; border-radius: 8px; object-fit: cover; width: 100%; }
+.form-actions { display: flex; gap: 12px; justify-content: flex-end; padding-top: 12px; }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
