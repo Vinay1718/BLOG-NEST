@@ -214,14 +214,45 @@ app.post('/api/posts/:postId/comments', authMiddleware, async (req, res) => {
 // GET single post by slug — catch-all, must be LAST of GET /posts/*
 app.get('/api/posts/:slug', async (req, res) => {
   try {
-    const post = await Post.findOneAndUpdate(
-      { slug: req.params.slug, published: true },
-      { $inc: { views: 1 } },
-      { new: true }
-    ).populate('author', 'name avatar bio');
-    if (!post) return res.status(404).json({ message: 'Post not found' });
+    const post = await Post.findOne({
+      slug: req.params.slug,
+      published: true
+    }).populate('author', 'name avatar bio');
+
+    if (!post)
+      return res.status(404).json({ message: 'Post not found' });
+
     res.json(post);
-  } catch (err) { res.status(500).json({ message: err.message }); }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+app.post('/api/posts/:slug/view', async (req, res) => {
+  try {
+    const post = await Post.findOneAndUpdate(
+      {
+        slug: req.params.slug,
+        published: true
+      },
+      {
+        $inc: { views: 1 }
+      },
+      {
+        new: true
+      }
+    );
+
+    if (!post)
+      return res.status(404).json({ message: 'Post not found' });
+
+    res.json({
+      views: post.views
+    });
+
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 // CREATE post

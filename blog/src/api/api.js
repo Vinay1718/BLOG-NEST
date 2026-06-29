@@ -18,6 +18,7 @@ export const changePassword = (data) => API.put('/auth/change-password', data);
 // Posts
 export const getPosts = (params) => API.get('/posts', { params });
 export const getPost = (slug) => API.get(`/posts/${slug}`);
+export const incrementView = (slug) => API.post(`/posts/${slug}/view`);
 export const getPostById = (id) => API.get(`/posts/id/${id}`);
 export const createPost = (data) => API.post('/posts', data);
 export const updatePost = (id, data) => API.put(`/posts/${id}`, data);

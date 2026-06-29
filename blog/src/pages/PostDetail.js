@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getPost, getComments, createComment, deleteComment, likePost, deletePost } from '../api/api';
+import {
+  getPost,
+  incrementView,
+  getComments,
+  createComment,
+  deleteComment,
+  likePost,
+  deletePost
+} from '../api/api';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import './PostDetail.css';
@@ -20,24 +28,46 @@ export default function PostDetail() {
   // Effect 1: fetch post + comments only when slug changes
   // user is intentionally NOT a dependency — so views only increment once per visit
   useEffect(() => {
-    const load = async () => {
-      setLoading(true);
-      try {
-        const pRes = await getPost(slug);
-        const fetchedPost = pRes.data;
-        setPost(fetchedPost);
-        setLikeCount(fetchedPost.likes?.length || 0);
-        const cRes = await getComments(fetchedPost._id);
-        setComments(cRes.data);
-      } catch (err) {
-        toast.error('Post not found');
-        navigate('/');
-      } finally {
-        setLoading(false);
+  const load = async () => {
+    setLoading(true);
+
+    try {
+      // Fetch the post
+      const pRes = await getPost(slug);
+      let fetchedPost = pRes.data;
+
+      // Count only one view per browser session
+      const viewed = sessionStorage.getItem(`viewed-${slug}`);
+
+      if (!viewed) {
+        const viewRes = await incrementView(slug);
+
+        fetchedPost = {
+          ...fetchedPost,
+          views: viewRes.data.views
+        };
+
+        sessionStorage.setItem(`viewed-${slug}`, "true");
       }
-    };
-    load();
-  }, [slug, navigate]); // eslint-disable-line react-hooks/exhaustive-deps
+
+      setPost(fetchedPost);
+      setLikeCount(fetchedPost.likes?.length || 0);
+
+      // Load comments
+      const cRes = await getComments(fetchedPost._id);
+      setComments(cRes.data);
+
+    } catch (err) {
+      toast.error('Post not found');
+      navigate('/');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  load();
+}, [slug, navigate]);
+  // eslint-disable-line react-hooks/exhaustive-deps
 
   // Effect 2: update liked state when user loads (no API call, no view increment)
   useEffect(() => {
