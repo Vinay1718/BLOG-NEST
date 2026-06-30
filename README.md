@@ -152,7 +152,7 @@ cp .env.example .env
 Now open `.env` and set your values:
 ```env
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/blogdb
+MONGO_URI= " "
 JWT_SECRET=choose_a_long_random_secret_string_here
 CLIENT_URL=http://localhost:3000
 ```
@@ -221,7 +221,6 @@ This creates:
 | Account        | Email               | Password   | Role  |
 |----------------|---------------------|------------|-------|
 | Admin User     | admin@blog.com      | admin123   | admin |
-| Jane Doe       | jane@blog.com       | user123    | user  |
 
 And 6 sample posts across: Technology, Lifestyle, Wellness, Health, Career categories.
 

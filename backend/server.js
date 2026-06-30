@@ -15,6 +15,9 @@ app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000', creden
 app.use(express.json());
 
 // ─── Database ──────────────────────────────────────────────────────────────────
+console.log("MONGO_URI =", process.env.MONGO_URI);
+console.log("NODE_ENV =", process.env.NODE_ENV);
+
 mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => { console.error('❌ MongoDB error:', err); process.exit(1); });
