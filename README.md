@@ -220,7 +220,7 @@ This creates:
 
 | Account        | Email               | Password   | Role  |
 |----------------|---------------------|------------|-------|
-| Admin User     | admin@blog.com      | admin123   | admin |
+| Admin User     | admin_email      | your_password   | admin |
 
 And 6 sample posts across: Technology, Lifestyle, Wellness, Health, Career categories.
 
