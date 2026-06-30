@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: '/api' });
+const API = axios.create({
+  baseURL:
+    process.env.REACT_APP_API_URL ||
+    'https://blognest-backend-jyif.onrender.com/api',
+});
 
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
